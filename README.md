@@ -18,7 +18,7 @@ Using ZQL:
 * For Windows, build with ```-L<path/to/zql.dll> -lzql```
 
 Examples
-* Create a database file and store some values in it.
+* Store some values in it.
 ```
 #include "zql.h"
 #include "zql.c"
