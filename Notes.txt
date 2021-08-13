@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+
+#define N_DATA 10
+#define N_INTS 5
+
+struct array_data
+{
+    int information;
+    int timestamp;
+    int size;
+    int *data_array;
+};
+struct array_data arr[N_DATA];
+
+void makeData(void)
+{
+    int i;
+    for (i = 0; i < N_DATA; i++)
+    {
+        arr[i].information = i;
+        arr[i].timestamp = i;
+        arr[i].data_array = malloc(N_INTS * sizeof(int));
+        for (size_t j = 0; j < N_INTS; j++)
+        {
+            arr[i].data_array[j] = (int) j;
+        }
+        arr[i].size = N_INTS;
+    }
+}
+void writeData(FILE *fp_out)
+{
+    int i;
+    for (i = 0; i < N_DATA; i++)
+    {
+        fwrite(&arr[i], sizeof(arr[i]), 1, fp_out);
+        fwrite(arr[i].data_array, arr[i].size * sizeof(int), 1, fp_out);
+    }
+}
+void readData(FILE *fp_in)
+{
+    int i = 0;
+    while (fread(&arr[i], sizeof(arr[i]), 1, fp_in) == 1)
+    {
+        arr[i].data_array = malloc(arr[i].size * sizeof(int));
+        fread(arr[i].data_array, arr[i].size * sizeof(int), 1, fp_in);
+
+        for (size_t j = 0; j < arr[i].size; j++)
+        {
+            printf("%d, ", arr[i].data_array[j]);
+        }
+        printf("\n");
+        i++;
+    }
+}
+
+int main(int argc, char const *argv[])
+{
+    // makeData();
+    // FILE *rf = fopen("tests/test.db", "w");
+    // writeData(rf);
+    // fclose(rf);
+    FILE *_read = fopen("tests/test.db", "r");
+    readData(_read);
+    fclose(_read);
+    return 0;
+}
