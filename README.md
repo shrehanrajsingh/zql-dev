@@ -82,9 +82,6 @@ Other utilities:
 * ```void ZQL_API ZQL_RemoveKey(char *_Key)``` 
 	* Remove a particular key from database.
 	* ```_Key``` The key to remove.
-* ```int ZQL_API ZQL_QuerySetLength(zql_t *z_ref)``` 
-	* Get number of values in a queryset.
-	* ```z_ref``` Query set.
 * ```int ZQL_API ZQL_QuerySetLength(zql_t *z_ref)```
 	* Get number of values from a query-set.
 	* ```z_ref``` Query set.
