@@ -19,7 +19,7 @@ Using ZQL:
 
 Examples
 * Store some values in it.
-```
+```c
 #include "zql.h"
 #include "zql.c"
 
@@ -43,7 +43,7 @@ int main(int argc, const char *argv[])
 }
 ```
 * Read values
-```
+```c
 #include "zql.h"
 #include "zql.c"
 
