@@ -21,7 +21,9 @@ Examples
 * Store some values in it.
 ```c
 #include "zql.h"
-#include "zql.c"
+#ifndef _WIN32
+#    include "zql.c"
+#endif
 
 int main(int argc, const char *argv[])
 {	
@@ -45,7 +47,9 @@ int main(int argc, const char *argv[])
 * Read values
 ```c
 #include "zql.h"
-#include "zql.c"
+#ifndef _WIN32
+#    include "zql.c"
+#endif
 
 int main(int argc, const char *argv[])
 {	
